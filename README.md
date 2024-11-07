@@ -10,7 +10,7 @@
 ├── .gitignore                # Arquivo para ignorar arquivos e pastas no Git
 ├── requirements.txt          # Arquivo com as dependências do projeto
 ├── README.md                 # Este arquivo (README)
-└── run.py                    # Script para rodar a aplicação
+└── start.py                    # Script para rodar a aplicação
 ```
 ### Descrição dos Arquivos e Pastas:
 
