@@ -6,11 +6,11 @@ from pymongo.errors import ServerSelectionTimeoutError
 
 # Configuração do logging
 logging.basicConfig(
-    level=logging.DEBUG,  # Defina o nível global de log (pode ser DEBUG, INFO, etc.)
-    format="%(asctime)s - %(levelname)s - %(message)s",  # Formato do log
+    level=logging.DEBUG, 
+    format="%(asctime)s - %(levelname)s - %(message)s", 
     handlers=[
-        logging.StreamHandler(),  # Exibe os logs no terminal
-        logging.FileHandler("app.log"),  # Salva os logs no arquivo app.log
+        logging.StreamHandler(),  
+        logging.FileHandler("app.log"), 
     ],
 )
 

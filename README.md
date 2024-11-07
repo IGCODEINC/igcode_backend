@@ -61,3 +61,21 @@ No diretório do projeto execute:
 ```bash
 poetry run start
 ```
+# Fluxo de Trabalho com Git para Equipe
+
+Ao trabalhar em equipe com Git, é importante seguir uma estratégia de ramificação bem definida para garantir uma colaboração eficiente. Abaixo está um exemplo de fluxo de trabalho utilizando Git.
+
+## 1. Criar uma Branch para Funcionalidades ou Correções de Bugs
+
+Sempre que você começar a trabalhar em uma nova funcionalidade ou correção de bug, crie uma nova branch a partir da branch `main` (ou `develop`). Isso permite que todos trabalhem de forma isolada, sem afetar o código principal de produção.
+
+### Convenção de Nomes de Branches:
+- **Branches de Funcionalidades**: `feature/<nome-da-funcionalidade>`
+- **Branches de Correções de Bugs**: `bugfix/<nome-do-bug>`
+- **Branches de Hotfix**: `hotfix/<nome-do-erro>`
+
+### Exemplo de Criação de Branch para Funcionalidade:
+
+```bash
+git checkout -b feature/autenticacao-de-usuario
+```
