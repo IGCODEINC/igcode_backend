@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "igcode-api"
+version = "0.1.0"
+description = ""
+authors = ["Anderson Rodrigues <eusouanderson@outlook.com>"]
+readme = "README.md"
+
+packages = [{ include = "app" }]
+
+
+[tool.poetry.scripts]
+start = "start:main"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.115.4"
+python-dotenv = "^1.0.1"
+passlib = "^1.7.4"
+bcrypt = "^4.2.0"
+python-jose = "^3.3.0"
+pydantic = {extras = ["email"], version = "^2.9.2"}
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = "^0.32.0"
+pymongo = "^4.10.1"
+black = "^24.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,37 @@
+# Ignorar arquivos de ambiente
+.env
+
+# Ignorar arquivos compilados do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar diretórios de ambientes virtuais
+venv/
+ENV/
+env/
+.venv/
+
+# Ignorar arquivos de logs
+*.log
+
+# Ignorar o banco de dados local (caso esteja usando um banco local, como SQLite)
+*.db
+
+# Ignorar arquivos temporários criados por editores de código
+.vscode/
+.idea/
+
+# Ignorar arquivos de cache
+*.cache
+*.egg-info/
+dist/
+build/
+
+# Ignorar arquivos do sistema
+.DS_Store   # Para macOS
+Thumbs.db   # Para Windows
+
+# Ignorar a pasta de dependências do Python
+*.egg
