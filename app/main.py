@@ -10,7 +10,6 @@ app = FastAPI(
     version="1.0.0"  
 )
 
-app.name = "API IGCODE"
 
 
 def get_user_collection(db=Depends(get_database)) -> Collection:
