@@ -1,0 +1,68 @@
+name: FastAPI MongoDB Workflow
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        options: --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          export PATH="$HOME/.local/bin:$PATH"
+        shell: bash
+
+      - name: Install dependencies with Poetry
+        run: |
+          poetry install
+          poetry add pytest  # Caso o pytest ainda não esteja nas dependências
+        shell: bash
+
+      - name: Run Tests
+        env:
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PASS: ${{ secrets.MONGO_PASS }}
+          MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER }}
+          MONGO_DB: ${{ secrets.MONGO_DB }}
+          MONGO_PARAMS: ${{ secrets.MONGO_PARAMS }}
+          LOCALHOST: ${{ secrets.LOCALHOST }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALGORITHM: ${{ secrets.ALGORITHM }}
+          ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+        run: |
+          poetry run pytest tests/
+        shell: bash
+
+      - name: Build package
+        if: success()
+        run: |
+          poetry build
+        shell: bash
+
+      - name: Publish package
+        if: success()
+        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
