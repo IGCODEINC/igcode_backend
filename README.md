@@ -11,6 +11,10 @@
 ├── requirements.txt          # Arquivo com as dependências do projeto
 ├── README.md                 # Este arquivo (README)
 └── start.py                    # Script para rodar a aplicação
+├── tests/
+│   ├── __init__.py         # Indica que 'tests' é um pacote
+│   ├── test_main.py        # Arquivo para testes de 'main.py'
+│   └── ... 
 ```
 ### Descrição dos Arquivos e Pastas:
 
