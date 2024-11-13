@@ -4,6 +4,8 @@ from app.auth import hash_password, verify_password, create_access_token, verify
 from bson import ObjectId
 from typing import Optional
 from fastapi import HTTPException
+from datetime import timedelta
+
 
 
 def create_user(collection: Collection, user: UserCreate) -> dict:
